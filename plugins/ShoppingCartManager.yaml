@@ -4,7 +4,7 @@ functions:
   - name: CreateCart
     description: Creates a new shopping cart for a user
     inputs:
-      user_id:
+      customer_id:
         type: Guid
         description: The ID of the user creating the cart
         is_required: true
@@ -100,7 +100,7 @@ types:
       id:
         type: Guid
         description: The ID of the cart
-      user_id:
+      customer_id:
         type: Guid
         description: The ID of the user associated with the cart
       items:
@@ -137,7 +137,7 @@ types:
       cart_id:
         type: Guid
         description: The ID of the cart from which the order was created
-      user_id:
+      customer_id:
         type: Guid
         description: The ID of the user who placed the order
       total_price:

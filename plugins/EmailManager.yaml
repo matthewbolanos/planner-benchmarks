@@ -1,4 +1,4 @@
-plugin_name: Emails
+plugin_name: EmailManager
 description: Manages emails within the email application.
 functions:
   - name: SendEmail
