@@ -1,0 +1,89 @@
+plugin_name: ChatAppManager
+description: Manages messages and conversations within the chat application.
+functions:
+  - name: SendMessage
+    description: Sends a chat message
+    inputs:
+      conversation_id:
+        type: Guid
+        description: The ID of the conversation
+        is_required: true
+      message_content:
+        type: string
+        description: The content of the message
+        is_required: true
+    output:
+      type: Message
+      description: The sent message
+
+  - name: RetrieveMessages
+    description: Retrieves chat messages from a conversation
+    inputs:
+      conversation_id:
+        type: Guid
+        description: The ID of the conversation to retrieve messages from
+        is_required: true
+      limit:
+        type: integer
+        description: Limit the number of retrieved messages
+        is_required: false
+    output:
+      type: Message[]
+      description: A list of chat messages from the conversation
+
+  - name: StartConversation
+    description: Starts a new conversation with specified participants
+    inputs:
+      participants:
+        type: Guid[]
+        description: List of user IDs (as Guid) to participate in the conversation
+        is_required: true
+    output:
+      type: Conversation
+      description: The started conversation
+
+  - name: LeaveConversation
+    description: Allows a user to leave a conversation
+    inputs:
+      conversation_id:
+        type: Guid
+        description: The ID of the conversation to leave
+        is_required: true
+    output:
+      type: Conversation
+      description: The updated conversation after the user has left
+
+types:
+  Message:
+    type: object
+    description: Represents a chat message within a conversation
+    properties:
+      id:
+        type: Guid
+        description: The ID of the chat message
+      sender_id:
+        type: Guid
+        description: The ID (as Guid) of the sender
+      content:
+        type: string
+        description: The content of the message
+      timestamp:
+        type: Date
+        description: Date and time when the message was sent
+
+  Conversation:
+    type: object
+    description: Represents a chat conversation
+    properties:
+      id:
+        type: Guid
+        description: The ID of the conversation
+      participants:
+        type: Guid[]
+        description: List of user IDs (as Guid) participating in the conversation
+      last_message:
+        type: Message
+        description: The last message sent in the conversation
+      created_at:
+        type: Date
+        description: Date and time when the conversation was created

@@ -1,0 +1,29 @@
+carts:
+  - id: a0b1c2d3-e4f5-6789-1011-121314151617
+    customer_id: 3f290d15-6d5e-4d10-8f6f-7eaf017f1234
+    items:
+      - cart_id: a0b1c2d3-e4f5-6789-1011-121314151617
+        item_id: 11aa22bb-33cc-44dd-55ee-66ff77gg88hh
+        quantity: 1
+        price: 1200.00
+      - cart_id: a0b1c2d3-e4f5-6789-1011-121314151617
+        item_id: 22bb33cc-44dd-55ee-66ff-77gg88hh99ii
+        quantity: 2
+        price: 20.00
+    total_price: 1240.00
+
+  - id: b1c2d3e4-f5a6-7890-1121-223344556677
+    customer_id: 7e9a8c2f-1098-422f-87c4-17c23f657890
+    items:
+      - cart_id: b1c2d3e4-f5a6-7890-1121-223344556677
+        item_id: 55ee66ff-77gg-88hh-99ii-00jj11kk22ll
+        quantity: 3
+        price: 25.00
+    total_price: 75.00
+
+orders:
+  - order_id: c0d1e2f3-a4b5-6789-0123-456789abcdef
+    cart_id: a0b1c2d3-e4f5-6789-1011-121314151617
+    customer_id: 3f290d15-6d5e-4d10-8f6f-7eaf017f1234
+    total_price: 1240.00
+    status: 1

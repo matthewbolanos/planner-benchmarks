@@ -1,0 +1,153 @@
+plugin_name: ShoppingCartManager
+description: Manages shopping carts, orders, and checkout processes within an eCommerce application.
+functions:
+  - name: CreateCart
+    description: Creates a new shopping cart for a user
+    inputs:
+      user_id:
+        type: Guid
+        description: The ID of the user creating the cart
+        is_required: true
+    output:
+      type: Cart
+      description: The newly created shopping cart
+
+  - name: AddItemToCart
+    description: Adds an item to a user's shopping cart
+    inputs:
+      cart_id:
+        type: Guid
+        description: The ID of the cart to add the item to
+        is_required: true
+      item_id:
+        type: Guid
+        description: The ID of the item to add
+        is_required: true
+      quantity:
+        type: integer
+        description: The quantity of the item to add
+        is_required: true
+    output:
+      type: CartItem
+      description: The added item in the cart
+
+  - name: RemoveItemFromCart
+    description: Removes an item from a user's shopping cart
+    inputs:
+      cart_id:
+        type: Guid
+        description: The ID of the cart to remove the item from
+        is_required: true
+      item_id:
+        type: Guid
+        description: The ID of the item to remove
+        is_required: true
+    output:
+      type: CartItem
+      description: The removed item from the cart
+
+  - name: UpdateCartItemQuantity
+    description: Updates the quantity of an item in the cart
+    inputs:
+      cart_id:
+        type: Guid
+        description: The ID of the cart to update
+        is_required: true
+      item_id:
+        type: Guid
+        description: The ID of the item to update
+        is_required: true
+      quantity:
+        type: integer
+        description: The new quantity of the item
+        is_required: true
+    output:
+      type: CartItem
+      description: The updated item in the cart
+
+  - name: CheckoutCart
+    description: Processes the checkout for a user's shopping cart
+    inputs:
+      cart_id:
+        type: Guid
+        description: The ID of the cart to checkout
+        is_required: true
+    output:
+      type: Order
+      description: The completed order
+
+  - name: GetCartDetails
+    description: Retrieves the details of a specific shopping cart
+    inputs:
+      cart_id:
+        type: Guid
+        description: The ID of the cart to retrieve
+        is_required: true
+    output:
+      type: Cart
+      description: The details of the retrieved cart
+
+types:
+  Guid:
+    type: string
+    description: A unique identifier
+    pattern: "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}"
+
+  Cart:
+    type: object
+    description: A shopping cart for a user
+    properties:
+      id:
+        type: Guid
+        description: The ID of the cart
+      user_id:
+        type: Guid
+        description: The ID of the user associated with the cart
+      items:
+        type: CartItem[]
+        description: The items in the cart
+      total_price:
+        type: float
+        description: The total price of items in the cart
+
+  CartItem:
+    type: object
+    description: An item in the shopping cart
+    properties:
+      cart_id:
+        type: Guid
+        description: The ID of the associated cart
+      item_id:
+        type: Guid
+        description: The ID of the item
+      quantity:
+        type: integer
+        description: The quantity of the item in the cart
+      price:
+        type: float
+        description: The price of the item
+
+  Order:
+    type: object
+    description: An order created after checkout
+    properties:
+      order_id:
+        type: Guid
+        description: The ID of the order
+      cart_id:
+        type: Guid
+        description: The ID of the cart from which the order was created
+      user_id:
+        type: Guid
+        description: The ID of the user who placed the order
+      total_price:
+        type: float
+        description: The total price of the order
+      status:
+        type: enum
+        description: The status of the order
+        values:
+          Pending: 1
+          Shipped: 2
+          Delivered: 3
+          Cancelled: 4

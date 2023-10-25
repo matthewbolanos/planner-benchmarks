@@ -1,0 +1,44 @@
+tasks:
+  - id: 81a92b3c-4d5e-6f7a-8b9c-0d1e2f3a4b5c
+    name: Design Landing Page
+    assignee:
+      id: 4a5b6c7d-8e9f-0a1b-2c3d-4e5f6a7b8c9d
+      first_name: Alice
+      last_name: Johnson
+      email: alice.johnson@contoso.com
+    description: Design the landing page for the new marketing campaign.
+    due_date: 2023-11-05
+    priority: High
+
+  - id: 91b02c3d-4e5f-6a7b-8c9d-0d1e2f3a4b5d
+    name: Implement Backend API
+    assignee:
+      id: 5b6c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0e
+      first_name: Bob
+      last_name: Martin
+      email: bob.martin@contoso.com
+    description: Implement API endpoints for user authentication.
+    due_date: 2023-11-12
+    priority: Medium
+
+  - id: a1b23c4d-5e6f-7a8b-9c0d-1e2f3a4b5e6d
+    name: Write Blog Post
+    assignee:
+      id: 6c7d8e9f-0a1b-2c3d-4e5f-6a7b8c9d0e1f
+      first_name: Charlie
+      last_name: Davis
+      email: charlie.davis@contoso.com
+    description: Write a blog post about the latest company achievements.
+    due_date: 2023-10-29
+    priority: Low
+
+  - id: b1c23d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e
+    name: Organize Team Building Event
+    assignee:
+      id: 7d8e9f0a-1b2c-3d4e-5f6a-7b8c9d0e1f2g
+      first_name: Denise
+      last_name: White
+      email: denise.white@contoso.com
+    description: Organize a team-building event for Q4.
+    due_date: 2023-12-10
+    priority: Medium

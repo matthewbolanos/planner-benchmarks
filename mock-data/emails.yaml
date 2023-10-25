@@ -1,0 +1,42 @@
+emails:
+  - id: 00112233-4455-6677-8899-aabbccddeeff
+    sender: alice.johnson@contoso.com
+    recipient: bob.martin@contoso.com
+    subject: "Team Meeting Tomorrow"
+    body: "Hi Bob, Please remember we have a team meeting scheduled for tomorrow at 10 AM. Regards, Alice"
+    cc: [charlie.davis@contoso.com, denise.white@contoso.com]
+    bcc: []
+    timestamp: "2023-10-24T14:15:22Z"
+    attachments:
+      - file_name: "Agenda.pdf"
+        file_type: ".pdf"
+        size: 2048
+        file_path: "https://contoso.com/files/Agenda.pdf"
+
+  - id: 22334455-6677-8899-aabb-ccddeeff0011
+    sender: alan.turner@suppliers.com
+    recipient: alice.johnson@contoso.com
+    subject: "Invoice for Supplies"
+    body: "Hi Alice, Attached is the invoice for the supplies you ordered last week. Regards, Alan"
+    cc: []
+    bcc: [bob.martin@contoso.com]
+    timestamp: "2023-10-23T09:05:10Z"
+    attachments:
+      - file_name: "Invoice_1023.pdf"
+        file_type: ".pdf"
+        size: 4096
+        file_path: "https://suppliers.com/invoices/Invoice_1023.pdf"
+
+  - id: 66778899-aabb-ccdd-eeff-001122334455
+    sender: charlie.davis@contoso.com
+    recipient: emily.watson@electronicsupplies.com
+    subject: "Order Confirmation"
+    body: "Hi Emily, I am writing to confirm our order of electronic components. Please find the list attached. Regards, Charlie"
+    cc: [denise.white@contoso.com]
+    bcc: [alice.johnson@contoso.com]
+    timestamp: "2023-10-22T11:32:45Z"
+    attachments:
+      - file_name: "Order_List.xls"
+        file_type: ".xls"
+        size: 5120
+        file_path: "https://contoso.com/orders/Order_List.xls"

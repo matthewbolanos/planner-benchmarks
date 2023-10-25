@@ -1,0 +1,181 @@
+plugin_name: InventoryManager
+description: Manages items and stocks within the Inventory application.
+functions:
+  - name: AddItem
+    description: Adds a new item to the inventory
+    inputs:
+      name:
+        type: string
+        description: The name of the item
+        is_required: true
+      category:
+        type: Category
+        description: The category of the item
+        is_required: true
+      supplier:
+        type: Contact
+        description: The supplier of the item
+        is_required: false
+      purchase_price:
+        type: float
+        description: The purchase price of the item
+        is_required: true
+      selling_price:
+        type: float
+        description: The selling price of the item
+        is_required: true
+      quantity:
+        type: integer
+        description: The initial quantity of the item
+        is_required: true
+    output:
+      type: Item
+      description: The newly added item
+
+  - name: UpdateItem
+    description: Updates details of an existing item
+    inputs:
+      id:
+        type: Guid
+        description: The ID of the item to update
+        is_required: true
+      name:
+        type: string
+        description: The updated name of the item
+        is_required: false
+      category:
+        type: Category
+        description: The updated category of the item
+        is_required: false
+      supplier:
+        type: Contact
+        description: The updated supplier of the item
+        is_required: false
+      purchase_price:
+        type: float
+        description: The updated purchase price of the item
+        is_required: false
+      selling_price:
+        type: float
+        description: The updated selling price of the item
+        is_required: false
+    output:
+      type: Item
+      description: The updated item
+
+  - name: RemoveItem
+    description: Removes an item from the inventory
+    inputs:
+      id:
+        type: Guid
+        description: The ID of the item to remove
+        is_required: true
+    output:
+      type: Item
+      description: The removed item
+
+  - name: GetItem
+    description: Retrieves details of a specific item by its ID
+    inputs:
+      id:
+        type: Guid
+        description: The ID of the item to retrieve
+        is_required: true
+    output:
+      type: Item
+      description: The retrieved item
+
+  - name: GetItems
+    description: Retrieves a list of items based on search criteria
+    inputs:
+      name:
+        type: string
+        description: A keyword to search items by name
+        is_required: false
+      category:
+        type: Category
+        description: The category to filter items by
+        is_required: false
+    output:
+      type: Item[]
+      description: A list of items matching the search criteria
+
+  - name: ReStockItem
+    description: Increases the quantity of an item in stock
+    inputs:
+      id:
+        type: Guid
+        description: The ID of the item to restock
+        is_required: true
+      quantity:
+        type: integer
+        description: The quantity to add
+        is_required: true
+    output:
+      type: Item
+      description: The restocked item
+
+types:
+  Category:
+    type: enum
+    description: The category an item belongs to.
+    values:
+      Electronics: 1
+      Clothing: 2
+      Groceries: 3
+      HomeAppliances: 4
+      Toys: 5
+
+  Contact:
+    type: object
+    description: A contact within the CRM
+    properties:
+      id:
+        type: Guid
+        description: The ID of the contact
+      first_name:
+        type: string
+        description: The first name of the contact
+      last_name:
+        type: string
+        description: The last name of the contact
+      email:
+        type: string
+        description: The email address of the contact
+      phone_number:
+        type: string
+        description: The phone number of the contact
+      company:
+        type: string
+        description: The company the contact is associated with
+
+  Guid:
+    type: string
+    description: A unique identifier
+    pattern: "[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}"
+
+  Item:
+    type: object
+    description: An item within the inventory
+    properties:
+      id:
+        type: Guid
+        description: The ID of the item
+      name:
+        type: string
+        description: The name of the item
+      category:
+        type: Category
+        description: The category of the item
+      supplier_id:
+        type: Contact
+        description: The supplier of the item
+      purchase_price:
+        type: float
+        description: The purchase price of the item
+      selling_price:
+        type: float
+        description: The selling price of the item
+      quantity:
+        type: integer
+        description: The quantity in stock

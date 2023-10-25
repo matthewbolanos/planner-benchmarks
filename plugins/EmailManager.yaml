@@ -1,0 +1,141 @@
+plugin_name: Emails
+description: Manages emails within the email application.
+functions:
+  - name: SendEmail
+    description: Sends an email
+    inputs:
+      recipient:
+        type: EmailAddress
+        description: The email address of the recipient
+        is_required: true
+      subject:
+        type: string
+        description: The subject of the email
+        is_required: true
+      body:
+        type: string
+        description: The main content of the email
+        is_required: true
+      cc:
+        type: EmailAddress[]
+        description: List of email addresses to be carbon copied
+        is_required: false
+      bcc:
+        type: EmailAddress[]
+        description: List of email addresses to be blind carbon copied
+        is_required: false
+      attachments:
+        type: File[]
+        description: List of files to be attached to the email
+        is_required: false
+    output:
+      type: Email
+      description: The sent email
+
+  - name: RetrieveEmails
+    description: Retrieves emails based on search criteria
+    inputs:
+      folder:
+        type: string
+        description: The folder from which to retrieve emails (e.g., Inbox, Sent, Trash)
+        is_required: false
+      search_query:
+        type: string
+        description: A keyword to search emails by subject, body, or sender
+        is_required: false
+    output:
+      type: Email[]
+      description: A list of emails matching the search criteria
+
+  - name: DeleteEmail
+    description: Deletes an email by its ID
+    inputs:
+      email_id:
+        type: Guid
+        description: The ID of the email to delete
+        is_required: true
+    output:
+      type: Email
+      description: The deleted email
+
+  - name: MarkEmailAsRead
+    description: Marks an email as read
+    inputs:
+      email_id:
+        type: Guid
+        description: The ID of the email to mark as read
+        is_required: true
+    output:
+      type: Email
+      description: The email marked as read
+
+  - name: ArchiveEmail
+    description: Archives an email
+    inputs:
+      email_id:
+        type: Guid
+        description: The ID of the email to archive
+        is_required: true
+    output:
+      type: Email
+      description: The archived email
+
+types:
+  EmailAddress:
+    type: string
+    description: A valid email address format
+    pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+
+  File:
+    type: object
+    description: Represents a file attachment
+    properties:
+      file_name:
+        type: string
+        description: Name of the file
+      file_type:
+        type: string
+        description: Type or extension of the file
+      size:
+        type: integer
+        description: Size of the file in bytes
+      file_path:
+        type: Uri
+        description: Path to the file
+
+  Email:
+    type: object
+    description: Represents an email within the email application
+    properties:
+      id:
+        type: Guid
+        description: The ID of the email
+      sender:
+        type: EmailAddress
+        description: The email address of the sender
+      recipient:
+        type: EmailAddress
+        description: The email address of the recipient
+      subject:
+        type: string
+        description: The subject of the email
+      body:
+        type: string
+        description: The main content of the email
+      cc:
+        type: EmailAddress[]
+        description: List of email addresses that were carbon copied
+      bcc:
+        type: EmailAddress[]
+        description: List of email addresses that were blind carbon copied
+      timestamp:
+        type: Date
+        description: Date and time when the email was sent or received
+      attachments:
+        type: File[]
+        description: List of files attached to the email
+
+  Uri:
+    type: string
+    description: A valid URI format
+    pattern: "^(?:[a-z]+:)?//"

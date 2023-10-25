@@ -1,0 +1,9 @@
+interactions:
+  - id: 876a6d2b-5f6e-4c20-945f-8de8c1d5abcd
+    contact_id: 3f290d15-6d5e-4d10-8f6f-7eaf017f1234
+    details: Discussed potential deal
+    interaction_date: 2023-10-23
+  - id: a2347f6b-89cd-456e-a8d2-b3f6c7d89e78
+    contact_id: 7e9a8c2f-1098-422f-87c4-17c23f657890
+    details: Sent product sample
+    interaction_date: 2023-10-24
